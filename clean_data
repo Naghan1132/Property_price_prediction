@@ -1,0 +1,51 @@
+Dépendance -> surface bat => 0 alors facile de faire du clustering (facilement identifiable)
+
+
+
+
+
+Variable à enlever : 
+
+Les 5 premières variables que des NaN
+Prefixe de section
+Tout les surface n lot ...
+No volume
+nÉme lot ...
+BTQ
+Nature culture speciale
+Code type Local
+
+
+Supprimer les individus Valeur fonciere = 0,1 ou NaN
+pareil pour ceux qui ont pas bcp de NaN, code voie, section, code postal, 
+
+
+Enlever les extremes (regarder box plot, enlever 10%)
+
+
+Concatener :
+
+date + code + num voie + commune (joseph fait)
+
+
+
+
+Imputer les NaN : 
+
+Surface terrain par la médiane
+Type Local => classif
+
+
+Ajouter les variables :
+
+Années, écoles, prix m2 / communes, 
+
+
+
+
+
+
+
+
+
+

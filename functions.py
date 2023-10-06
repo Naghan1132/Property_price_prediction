@@ -2,6 +2,9 @@ import pandas as pd
 import seaborn as sn
 import matplotlib.pyplot as plt
 from sklearn.impute import KNNImputer, SimpleImputer
+from sklearn.preprocessing import LabelEncoder, OneHotEncoder
+from scientisttools.discriminant_analysis import DISMIX
+from sklearn.feature_selection import VarianceThreshold
 
 #will load a dataframe from the root directory
 ##params:
@@ -120,8 +123,55 @@ def traitement(df, version=1):
         #Imputation Nature culture par le mode
         df["Nature culture"]= SimpleImputer(strategy="most_frequent").fit_transform(df[["Nature culture"]])[:,0]
         #drop columns type de Voie, et No voie
-        df= df.drop(columns=["Type de voie", "No voie"])
+        if "Type de voie" in df.columns:
+            df= df.drop(columns=["Type de voie", "No voie"])
+        #date de mutation scinder en mois jour annee
+        df= data_f_date(df)
+        #convertion du code en categorie
+        df["Code departement"]= df["Code departement"].astype("str")
+    return df
 
+
+def encoding(df):
+    lb= LabelEncoder()
+    # "Commune", "Section" et section encoder par label
+    df["Voie"]= lb.fit_transform(df["Voie"])
+    df["Commune"]= lb.fit_transform(df["Commune"])
+    df["Section"]= lb.fit_transform(df["Section"])
+    #les autres par onehot
+    df["Code departement"]= df["Code departement"].astype("str")
+    o=df.select_dtypes("object")
+    df= pd.get_dummies(df, columns=o.columns)#, dtype="int"
+    return df
+
+def classif_local(df):
+    print("on regroupe les valeurs na du type local comme nos données à classer et les autres pour former le modèle")
+    data1= df[~df["Code type local"].isna()]
+    data2= df[df["Code type local"].isna()]
+    print(f"les données à predire ont la taille {data2.shape[0]}x{data2.shape[1]}")
+    print(f"les données à entrainer ont la taille {data1.shape[0]}x{data1.shape[1]}")
+    print("\n")
+    print("on scinde la base d'entrainement en X et Y")
+    Y= data1["Code type local"]
+    X= data1.drop(columns=["Code type local"])
+    print("X: ")
+    display(X.head())
+    print("\n")
+    print("Y: ")
+    display(Y.head())
+    print("\n")
+    print("On centre réduit X et le split en train et test")
+    xtrain
+
+    return X
+
+
+#la pipeline de nettoyage
+def pipeline_nettoyage(df):
+    df= traitement(df, 1)
+    df= traitement(df, 2)
+    df= traitement(df, 3)
+    df= encoding(df)
     return df
 
 
@@ -135,23 +185,16 @@ def traitement(df, version=1):
 
 def data_f_date(df):
     #get "Date mutation" and "Valeur fonciere"
-    df2= df[["Date mutation", "Valeur fonciere"]]
-    if df["Date mutation"].dtype  != "int":
-        #convert date to string
-        df2["Date mutation"]= df2["Date mutation"].astype("str")
-        #split into "jour", "mois", "annee"
-        df2["jour"]= df2["Date mutation"].agg(lambda x: x.split("/")[0]).astype("int")
-        df2["mois"]= df2["Date mutation"].agg(lambda x: x.split("/")[1]).astype("int")
-        df2["annee"]= df2["Date mutation"].agg(lambda x: x.split("/")[2]).astype("int")
-    rp= df2[["mois", "Valeur fonciere"]].groupby("mois").agg("sum")
-
-    plt.bar(rp.index, rp["Valeur fonciere"])
-    plt.title("Valeur foncière totale par mois")
-    plt.xlabel("mois")
-    plt.ylabel("valeur foncière")
-    plt.legend()
-    plt.show()
-    return df2
+    if ("Date mutation" in df.columns):
+        if df["Date mutation"].dtype != "int":
+            #convert date to string
+            df["Date mutation"]= df["Date mutation"].astype("str")
+            #split into "jour", "mois", "annee"
+            df["jour"]= df["Date mutation"].agg(lambda x: x.split("/")[0]).astype("int")
+            df["mois"]= df["Date mutation"].agg(lambda x: x.split("/")[1]).astype("int")
+            df["annee"]= df["Date mutation"].agg(lambda x: x.split("/")[2]).astype("int")
+            df= df.drop(columns=["Date mutation"])
+    return df
 
 
 #PLOT DE LA CORRELATION DES VALEURS NUMERIQUES SOUS FORME HEATMAP

@@ -95,36 +95,37 @@ def traitement(df, version=1):
             df["Valeur fonciere"]= df["Valeur fonciere"].str.replace(",", ".").astype("float")
         #suppression des columns à perc de valeurs null
         manq= handleNA(df, 0.6) #["Identifiant de document", "Reference document", "1 Articles CGI", "2 Articles CGI", "3 Articles CGI", "4 Articles CGI", "5 Articles CGI", "Identifiant local"]
-        if manq[0] in df.columns:
-                df= df.drop(columns=manq)
+        if len(manq)>0:
+            if manq[0] in df.columns:
+                    df= df.drop(columns=manq)
         #suppression des lignes dont la valeur foncière est nulle à 0 ou 1
         df= df[~df["Valeur fonciere"].isna()]
         df= df[~df["Valeur fonciere"].isin([0, 1])]
     elif version==2:
         #suppression des doublons sur la base des variables "Code type local", "Date mutation", "Code postal", "Commune", "Valeur fonciere", "Surface terrain"
+        dups= [x for x in ["Code type local", "Date mutation", "Code postal", "Commune", "Valeur fonciere", "Surface terrain"] if x in df.columns]
         if "Code postal" in df.columns:
-            df= df.drop_duplicates(subset=["Code type local", "Date mutation", "Code postal", "Commune", "Valeur fonciere", "Surface terrain"])
+            df= df.drop_duplicates(subset=dups)
         
         #supprimer les variables qui se repètent
-        repet= ["Type local", "Code commune", "Code voie"] 
+        repet= [x for x in ["Type local", "Code commune", "Code voie", "No plan", "Section", "Voie"] if x in df.columns ]
         if repet[0] in df.columns:
             df= df.drop(columns=repet)
     elif version==3:
         #drop les na de Voie, Code postal et section
-        df=df.dropna(subset=["Voie"])
-        df=df.dropna(subset=["Code postal"])
-        df=df.dropna(subset=["Section"])
+        #df=df.dropna(subset=["Voie"])
+        df=df.dropna(subset=["Code postal", "Nature culture", "Surface terrain", "Nombre pieces principales", "Surface reelle bati"])
+        #df=df.dropna(subset=["Section"])
         #Imputation de surface terrain par median
-        df["Surface terrain"]=SimpleImputer(strategy="median").fit_transform(df[["Surface terrain"]])
+        #df["Surface terrain"]=SimpleImputer(strategy="median").fit_transform(df[["Surface terrain"]])
         #Imputation Nombre pieces principales par le mode
-        df["Nombre pieces principales"]= SimpleImputer(strategy="most_frequent").fit_transform(df[["Nombre pieces principales"]])
+        #df["Nombre pieces principales"]= SimpleImputer(strategy="most_frequent").fit_transform(df[["Nombre pieces principales"]])
         #imputation de Surface reelle bati par moyenne
-        df["Surface reelle bati"]= SimpleImputer(strategy="mean").fit_transform(df[["Surface reelle bati"]])
-        #Imputation Nature culture par le mode
-        df["Nature culture"]= SimpleImputer(strategy="most_frequent").fit_transform(df[["Nature culture"]])[:,0]
+        #df["Surface reelle bati"]= SimpleImputer(strategy="mean").fit_transform(df[["Surface reelle bati"]])
         #drop columns type de Voie, et No voie
         if "Type de voie" in df.columns:
             df= df.drop(columns=["Type de voie", "No voie"])
+        df= df.dropna(subset=["Code type local"])
         #date de mutation scinder en mois jour annee
         df= data_f_date(df)
         #convertion du code en categorie
@@ -135,13 +136,11 @@ def traitement(df, version=1):
 def encoding(df):
     lb= LabelEncoder()
     # "Commune", "Section" et section encoder par label
-    df["Voie"]= lb.fit_transform(df["Voie"])
     df["Commune"]= lb.fit_transform(df["Commune"])
-    df["Section"]= lb.fit_transform(df["Section"])
     #les autres par onehot
     df["Code departement"]= df["Code departement"].astype("str")
     o=df.select_dtypes("object")
-    df= pd.get_dummies(df, columns=o.columns)#, dtype="int"
+    df= pd.get_dummies(df, columns=o.columns, dtype="int")#, dtype="int"
     return df
 
 def classif_local(df):

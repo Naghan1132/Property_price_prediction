@@ -3,3 +3,10 @@ data/dataframe_avec_coord.pkl
 data/training_classif_data.pkl
 data/prix_moyen_m2.pkl
 data/clean_df.pkl
+data/df_with_nan.pkl
+valeursfoncieres-2018.txt
+valeursfoncieres-2019.txt
+valeursfoncieres-2020.txt
+valeursfoncieres-2021.txt
+submissions.csv
+submissions.csv.zip

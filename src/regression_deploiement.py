@@ -1,4 +1,4 @@
-def regression(df,kaggle):
+def regression(df):
     import pickle as pkl
 
     # Regression

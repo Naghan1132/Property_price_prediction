@@ -1,4 +1,4 @@
-def regression(df):
+def regression(df,kaggle):
     import pickle as pkl
 
     # Regression
@@ -37,7 +37,6 @@ def regression(df):
             return pred
 
 
-    
     # Appliquer la fonction à chaque ligne du DataFrame
     df['TARGET'] = df.apply(predict_valeur_fonciere, axis=1)
 

@@ -5,7 +5,6 @@ from regression_deploiement import regression
 import pandas as pd
 
 
-
 submissions = pd.read_csv('../submissions.csv')
 # 378 0000 individus
 

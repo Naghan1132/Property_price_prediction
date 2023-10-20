@@ -16,15 +16,15 @@ def regression(df):
         model_reg_4 = pkl.load(fichier_pickler)
 
     
-    
+
     def predict_valeur_fonciere(row):
-        
+    
         col_pred = ['Surface_reelle_bati', 'Nombre_pieces_principales', 'Surface_terrain',
        'month', 'latitude', 'longitude', 'niveau_vie_commune',
        'Prix_moyen_m2']
         
-        #print(row[col_pred])
-        
+        #print(row[col_pred].name)
+
         # ajouter lat et long et niveau de vie à sub_final 
         if row['Code_type_local'] == 1:
             pred = model_reg_1.predict(row[col_pred].values.reshape(1, -1))

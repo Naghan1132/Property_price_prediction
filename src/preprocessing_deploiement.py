@@ -14,7 +14,6 @@ def preprocessing(df):
 
     # MERGE
     df = pd.merge(df, geo_commune, on=['Commune', 'Code_postal'], how='left')
-
    
 
 

@@ -1,5 +1,4 @@
 def regression(df):
-
     import pickle as pkl
 
     # Regression
@@ -18,12 +17,10 @@ def regression(df):
     
 
     def predict_valeur_fonciere(row):
-    
+
         col_pred = ['Surface_reelle_bati', 'Nombre_pieces_principales', 'Surface_terrain',
        'month', 'latitude', 'longitude', 'niveau_vie_commune',
        'Prix_moyen_m2']
-        
-        #print(row[col_pred].name)
 
         # ajouter lat et long et niveau de vie à sub_final 
         if row['Code_type_local'] == 1:
@@ -40,7 +37,7 @@ def regression(df):
             return pred
 
 
-
+    
     # Appliquer la fonction à chaque ligne du DataFrame
     df['TARGET'] = df.apply(predict_valeur_fonciere, axis=1)
 
@@ -52,4 +49,5 @@ def regression(df):
     df['TARGET'] = df['TARGET'].apply(lambda x: convertir(x))
     last_cols = ['ID','TARGET']
     df = df[last_cols]
-    return(df)
+    df.set_index('ID', inplace=True)
+    return (df)

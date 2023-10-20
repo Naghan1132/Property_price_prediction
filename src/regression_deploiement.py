@@ -1,26 +1,30 @@
 def regression(df):
+
+    import pickle as pkl
+
+    # Regression
+    with open('../model/modele_regression_code_1.pkl', 'rb') as fichier_pickler:
+        model_reg_1 = pkl.load(fichier_pickler)
+
+    with open('../model/modele_regression_code_2.pkl', 'rb') as fichier_pickler:
+        model_reg_2 = pkl.load(fichier_pickler)
+
+    with open('../model/modele_regression_code_3.pkl', 'rb') as fichier_pickler:
+        model_reg_3 = pkl.load(fichier_pickler)
+
+    with open('../model/modele_regression_code_4.pkl', 'rb') as fichier_pickler:
+        model_reg_4 = pkl.load(fichier_pickler)
+
+    
+    
     def predict_valeur_fonciere(row):
-
-        import pickle as pkl
-
         
-        # Regression
-        with open('../model/modele_regression_code_1.pkl','rb') as fichier_pickler:
-            model_reg_1 = pkl.load(fichier_pickler)
-
-        with open('../model/modele_regression_code_2.pkl','rb') as fichier_pickler:
-            model_reg_2 = pkl.load(fichier_pickler)
-
-        with open('../model/modele_regression_code_3.pkl','rb') as fichier_pickler:
-            model_reg_3 = pkl.load(fichier_pickler)
-
-        with open('../model/modele_regression_code_4.pkl','rb') as fichier_pickler:
-            model_reg_4 = pkl.load(fichier_pickler)
-
-
-        col_pred = ['Nombre_de_lots', 'Surface_reelle_bati', 'Nombre_pieces_principales',
-                'month', 'Prix_moyen_m2']
-
+        col_pred = ['Surface_reelle_bati', 'Nombre_pieces_principales', 'Surface_terrain',
+       'month', 'latitude', 'longitude', 'niveau_vie_commune',
+       'Prix_moyen_m2']
+        
+        #print(row[col_pred])
+        
         # ajouter lat et long et niveau de vie à sub_final 
         if row['Code_type_local'] == 1:
             pred = model_reg_1.predict(row[col_pred].values.reshape(1, -1))
@@ -35,9 +39,10 @@ def regression(df):
             pred = model_reg_4.predict(row[col_pred].values.reshape(1, -1))
             return pred
 
+
+
     # Appliquer la fonction à chaque ligne du DataFrame
     df['TARGET'] = df.apply(predict_valeur_fonciere, axis=1)
-
 
     # Mise en forme des prédictions
     def convertir(liste):

@@ -17,20 +17,38 @@ Les données d'entraînement sont extraites du jeu de données public de [Data.g
 2. **Installation des Dépendances :** Assurez-vous d'avoir installé Python sur votre système. Installez les dépendances en utilisant le fichier `requirements.txt` :
 
 
+3. **Prétraitement des données :** Pour entraîner le modèle, utilisez le script `train.py` en fournissant les données d'entraînement appropriées.
+
+4. **Classifcation de code type local :** Une fois le modèle entraîné, vous pouvez l'utiliser pour prédire le prix des biens immobiliers en utilisant le script `predict.py` et en fournissant les caractéristiques en entrée.
+
+4. **Régression :** Une fois le modèle entraîné, vous pouvez l'utiliser pour prédire le prix des biens immobiliers en utilisant le script `predict.py` et en fournissant les caractéristiques en entrée.
 
 
-Les caractéristiques doivent être fournies au format JSON.
+5. **Prédiction :** Une fois le modèle entraîné, vous pouvez l'utiliser pour prédire le prix des biens immobiliers en utilisant le script `predict.py` et en fournissant les caractéristiques en entrée.
+
+
+## Dashboard
+
+Le dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4.evennode.com/)
+
+![Dashboard](https://imgur.com/a/xWkPOab)
+
+![Prédictions](https://imgur.com/a/Ew0qgcF)
+
 
 ## Structure du Projet
 
-- **`data/` :** Ce dossier contient le fichier CSV des données d'entraînement.
+- **`data/` :** Ce dossier contient des données additionnelles aux fichiers CSV utilisés.
 - **`src/` :** Ce dossier contient le code source du projet, y compris les scripts d'entraînement et de prédiction.
 - **`models/` :** Ce dossier contient les modèles entraînés.
 - **`requirements.txt` :** Ce fichier contient la liste des dépendances requises pour le projet.
 
-## Auteur
+## Auteurs
 
-[Votre Nom]
+Nathan GRIMAULT
+Ivan
+Cyrielle
+Joe
 
 ## Licence
 

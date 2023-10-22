@@ -33,6 +33,10 @@ Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4
 
 ![Interface](https://github.com/Naghan1132/Property_price_prediction/tree/main/img/dash.png)
 
+<img src="https://github.com/Naghan1132/Property_price_prediction/tree/main/img/dash.png" alt="Description de l'image" width="300"/>
+
+<img src="https://github.com/Naghan1132/Property_price_prediction/tree/main/img/pred.png" alt="Description de l'image" width="300"/>
+
 ![Prédictions](https://github.com/Naghan1132/Property_price_prediction/tree/main/img/pred.png)
 
 

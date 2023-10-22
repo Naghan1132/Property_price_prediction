@@ -8,9 +8,9 @@ Les données d'entraînement sont extraites du jeu de données public de [Data.g
 
 ## Fonctionnalités
 
-- **Prédiction de Prix :** Le modèle utilise des caractéristiques telles que la superficie, l'emplacement, le nombre de pièces, etc., pour prédire le prix des biens immobiliers.
+- **Prédiction de Prix :** Le modèle utilise des caractéristiques telles que la superficie, l'emplacement, le nombre de pièces, etc... pour prédire le prix des biens immobiliers.
 
-## Comment Utiliser le Projet
+## Comment utiliser le projet
 
 1. **Téléchargement des Données :** Téléchargez les données à partir du lien [Data.gouv.fr](https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/) et placez le fichier CSV à la racine du projet.
 
@@ -35,8 +35,11 @@ Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4
 
 ![Prédictions](http://www.image-heberg.fr/files/16979749332349003612.png)
 
+Le code du dashboard se trouve sur le depôt : [git Dashboard](https://github.com/Yameogo123/dash-val-fonciere-front/tree/main)
 
-## Structure du Projet
+NB : le dashboard ne fonctionne pas sur Google Chrome, utilisez Mozilla Firefox
+
+## Structure du projet
 
 - **`data/` :** Ce dossier contient des données additionnelles aux fichiers CSV utilisés.
 - **`src/` :** Ce dossier contient le code source du projet, y compris les scripts d'entraînement et de prédiction.

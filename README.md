@@ -37,7 +37,7 @@ Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4
 
 Le code du dashboard se trouve sur le depôt : [git Dashboard](https://github.com/Yameogo123/dash-val-fonciere-front/tree/main)
 
-NB : le dashboard ne fonctionne pas sur Google Chrome, utilisez Mozilla Firefox
+NB : le dashboard ne fonctionne pas sur Google Chrome, utilisez `Mozilla Firefox`
 
 ## Structure du projet
 

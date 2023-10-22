@@ -1,6 +1,6 @@
 # Property Price Prediction
 
-Ce projet implémente un modèle de prédiction des prix des biens immobiliers en utilisant Python et des techniques d'apprentissage automatique. Les données utilisées pour l'entraînement du modèle proviennent de [Data.gouv.fr](https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/) et couvrent les années 2018, 2019, 2020 et 2021.
+Ce projet implémente un modèle de prédiction des prix des biens immobiliers en utilisant Python et des techniques de machine learning.
 
 ## Source des Données
 
@@ -8,28 +8,28 @@ Les données d'entraînement sont extraites du jeu de données public de [Data.g
 
 ## Fonctionnalités
 
-- **Prédiction de Prix :** Le modèle utilise des caractéristiques telles que la superficie, le nombre de chambres, l'emplacement, etc., pour prédire le prix des biens immobiliers.
+- **Prédiction de Prix :** Le modèle utilise des caractéristiques telles que la superficie, l'emplacement, le nombre de pièces, etc., pour prédire le prix des biens immobiliers.
 
 ## Comment Utiliser le Projet
 
-1. **Téléchargement des Données :** Téléchargez les données à partir du lien [Data.gouv.fr](https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/) et placez le fichier CSV dans le dossier `data/`.
+1. **Téléchargement des Données :** Téléchargez les données à partir du lien [Data.gouv.fr](https://www.data.gouv.fr/fr/datasets/demandes-de-valeurs-foncieres/) et placez le fichier CSV à la racine du projet.
 
 2. **Installation des Dépendances :** Assurez-vous d'avoir installé Python sur votre système. Installez les dépendances en utilisant le fichier `requirements.txt` :
 
 
-3. **Prétraitement des données :** Pour entraîner le modèle, utilisez le script `train.py` en fournissant les données d'entraînement appropriées.
+3. **Prétraitement des données :** Pour prétraiter les données, utilisez le script `preprocessing_deploiement.py` ou alors le notebook `preprocessing.ipynb`.
 
-4. **Classifcation de code type local :** Une fois le modèle entraîné, vous pouvez l'utiliser pour prédire le prix des biens immobiliers en utilisant le script `predict.py` et en fournissant les caractéristiques en entrée.
-
-4. **Régression :** Une fois le modèle entraîné, vous pouvez l'utiliser pour prédire le prix des biens immobiliers en utilisant le script `predict.py` et en fournissant les caractéristiques en entrée.
+4. **Classifcation de code type local :** Une fois les données nettoyées, vous pouvez prédire le code type local des biens (variable extremement utile pour prédire la valeur foncière d'un bien), mais les informations manquent grandement. C'est pour cela que nous utilisons un modèle de classification, c'est le notebook `classification.ipynb` qui s'occupe d'entrainer et de générer le modèle de classification, il se trouvera dans le dossier `model/`.
 
 
-5. **Prédiction :** Une fois le modèle entraîné, vous pouvez l'utiliser pour prédire le prix des biens immobiliers en utilisant le script `predict.py` et en fournissant les caractéristiques en entrée.
+4. **Régression :** Une fois les code type local prédit, vous pouvez entrainer le modèle de régression en utilisant le script `regression.ipynb`, cela va créer les modèles de régression pour chaque code type local, dans le dossier `model/`.
+
+5. **Prédiction :** Le script `make_predictions.py`, vous permets prédire la valeur foncière des données en entrée, il vous retournera la valeur foncière de chaque bien.
 
 
 ## Dashboard
 
-Le dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4.evennode.com/)
+Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4.evennode.com/)
 
 ![Dashboard](https://imgur.com/a/xWkPOab)
 
@@ -40,7 +40,7 @@ Le dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4
 
 - **`data/` :** Ce dossier contient des données additionnelles aux fichiers CSV utilisés.
 - **`src/` :** Ce dossier contient le code source du projet, y compris les scripts d'entraînement et de prédiction.
-- **`models/` :** Ce dossier contient les modèles entraînés.
+- **`model/` :** Ce dossier contient les modèles entraînés.
 - **`requirements.txt` :** Ce fichier contient la liste des dépendances requises pour le projet.
 
 ## Auteurs
@@ -50,8 +50,5 @@ Ivan
 Cyrielle
 Joe
 
-## Licence
-
-Ce projet est sous licence [Nom de la Licence]. Consultez le fichier LICENCE pour plus de détails.
 
 

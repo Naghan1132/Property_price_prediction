@@ -45,11 +45,10 @@ Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4
 
 ## Auteurs
 
-- ** Nathan GRIMAULT : ** 
-
-Ivan
-Cyrielle
-Joe
+- Nathan GRIMAULT   
+- Wendyam YAMEOGO
+- Cyrielle BARAILLER
+- Joseph PELHMAN
 
 
 

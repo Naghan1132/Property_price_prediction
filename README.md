@@ -35,9 +35,13 @@ Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4
 
 ![Prédictions](http://www.image-heberg.fr/files/16979749332349003612.png)
 
-Le code du dashboard se trouve sur le depôt : [git Dashboard](https://github.com/Yameogo123/dash-val-fonciere-front/tree/main)
+Le code du dashboard se trouve sur le depôt : [git dashboard](https://github.com/Yameogo123/dash-val-fonciere-front/tree/main)
 
 NB : le dashboard ne fonctionne pas sur Google Chrome, utilisez `Mozilla Firefox`
+
+## API
+
+Pour directement utilisez l'API du projet, vous pouvez vous rendre à l'adresse qui suit : [fast API](http://api-dash.eu-4.evennode.com/docs)
 
 ## Structure du projet
 

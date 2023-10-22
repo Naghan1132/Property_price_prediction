@@ -45,7 +45,8 @@ Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4
 
 ## Auteurs
 
-Nathan GRIMAULT
+- ** Nathan GRIMAULT : ** 
+
 Ivan
 Cyrielle
 Joe

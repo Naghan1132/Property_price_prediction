@@ -31,7 +31,7 @@ Les données d'entraînement sont extraites du jeu de données public de [Data.g
 
 Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4.evennode.com/)
 
-![Interface](https://github.com/Naghan1132/Property_price_prediction/tree/main/img/dash.png)
+![Interface](https://ibb.co/NLf3f3p)
 
 <img src="https://github.com/Naghan1132/Property_price_prediction/tree/main/img/dash.png" alt="Description de l'image" width="300"/>
 

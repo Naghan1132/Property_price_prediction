@@ -31,7 +31,7 @@ Les données d'entraînement sont extraites du jeu de données public de [Data.g
 
 Un dashboard est accessible à l'adresse suivante : [Dashboard](http://dash.eu-4.evennode.com/)
 
-![Interface](http://www.image-heberg.fr/files/16979749071494181937.png)
+![Interface](http://www.image-heberg.fr/files/16981671222071187444.png)
 
 ![Prédictions](http://www.image-heberg.fr/files/16979749332349003612.png)
 
